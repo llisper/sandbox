@@ -2,8 +2,16 @@ CFLAGS = -g -Wall
 srcs = $(wildcard *.cc)
 objs = $(patsubst %.cc, %.o, $(srcs))
 
-random: $(objs)
+all: random single
+
+random: random.o
 	$(CC) -o $@ $< -lstdc++
 
-%.o: %.cc
+random.o: random.cc
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+single: single.o
+	$(CC) -o $@ $< -lstdc++
+
+single.o: single.cc
 	$(CC) $(CFLAGS) -c -o $@ $<

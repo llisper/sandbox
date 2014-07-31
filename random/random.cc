@@ -64,7 +64,6 @@ static double disturb;
 static int disturb_factor;
 static int split;
 
-// static void variance(std::ostream& os, const std::vector<int>& vals, int range);
 static double statistics(std::ostream& os, const std::vector<int>& cnt, int split);
 
 int main(int argc, char *argv[]) {
@@ -134,19 +133,6 @@ int main(int argc, char *argv[]) {
   statistics(std::cout, g_count, split);
   return 0;
 }
-
-/*
-void variance(std::ostream& os, const std::vector<int>& vals, int range) {
-  double avg = (range - 1) / 2.0; // the expected value is range / 2, which is average
-  double variance = 0.0;
-  for (size_t i = 0; i < vals.size(); ++i) {
-    variance += (vals[i] - avg) * (vals[i] - avg);
-  }
-
-  variance /= vals.size();
-  os << '[' << variance << ']';
-}
-*/
 
 double statistics(std::ostream& os, const std::vector<int>& cnt, int split) {
   int total = std::accumulate(cnt.begin(), cnt.end(), 0);
