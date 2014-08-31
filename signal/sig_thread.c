@@ -39,6 +39,8 @@ void sig_handler(int signo)
     printf("caught sig[%d] in thread[%x]\n", signo, (int)pthread_self());
 }
 
+typedef void (*worker_log)(const char* fmt, ...);
+
 int main(void) {
     int ret;
     void *thr_ret;
@@ -68,6 +70,10 @@ int main(void) {
 
     pthread_join(tid, &thr_ret);
     printf("thread exit: %d\n", (int)thr_ret);
+
+    worker_log wl = printf;
+    wl("wl\n");
+
     return 0;
 }
 
